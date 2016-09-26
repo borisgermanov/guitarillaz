@@ -6,14 +6,12 @@
 package io.github.borisgermanov.guitarillaz;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import javax.imageio.ImageIO;
-//import java.awt.*;
-//import java.io.IOException;
-//import java.net.URL;
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /*
  *
@@ -53,7 +51,7 @@ public class GuitarillazMain {
         }
     }
 
-    private GuitarillazMain() {
+    public GuitarillazMain() {
         Config config = new Config();
 
         radioButtonClean.addActionListener(new ActionListener() {
@@ -77,26 +75,26 @@ public class GuitarillazMain {
                 testLabel2.setText(actionEvent.getActionCommand());
             }
         });
+    }
 
-        /*
-        final List<Image> icons = new ArrayList<Image>();
-        try {
-            icons.add(ImageIO.read(getClass().getResource("guitarillaz_16.png")));
-            icons.add(ImageIO.read(getClass().getResource("guitarillaz_32.png")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
+    private List<Image> getImageIcons() {
+        List<Image> icons = new ArrayList<Image>();
+
+        icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_16.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_32.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_64.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_128.png")).getImage());
+
+        return icons;
     }
 
     public static void main(String[] args) {
-        JFrame mainFrame = new JFrame("Guitarillaz");
+        JFrame mainFrame = new JFrame(ResourceBundle.getBundle("res/guitarillaz").getString("app.Name"));
         GuitarillazMain guitarillazMain = new GuitarillazMain();
 
         mainFrame.setContentPane(guitarillazMain.panelMain);
-        /*
-        mainFrame.setIconImages(guitarillazMain.icons);
-        */
+        mainFrame.setIconImages(guitarillazMain.getImageIcons());
+
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);
