@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /*
@@ -77,24 +76,20 @@ public class GuitarillazMain {
         });
     }
 
-    private List<Image> getImageIcons() {
-        List<Image> icons = new ArrayList<Image>();
-
+    private ArrayList<Image> getIconImages() {
+        ArrayList<Image> icons = new ArrayList<Image>();
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_16.png")).getImage());
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_32.png")).getImage());
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_64.png")).getImage());
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_128.png")).getImage());
-
         return icons;
     }
 
     public static void main(String[] args) {
-        JFrame mainFrame = new JFrame(ResourceBundle.getBundle("res/guitarillaz").getString("app.Name"));
         GuitarillazMain guitarillazMain = new GuitarillazMain();
-
+        JFrame mainFrame = new JFrame(ResourceBundle.getBundle("res/guitarillaz").getString("app.Name"));
         mainFrame.setContentPane(guitarillazMain.panelMain);
-        mainFrame.setIconImages(guitarillazMain.getImageIcons());
-
+        mainFrame.setIconImages(guitarillazMain.getIconImages());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);
