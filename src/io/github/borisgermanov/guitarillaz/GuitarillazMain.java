@@ -1,4 +1,4 @@
-/*
+/**
  * bo 20160923
  * https://borisgermanov.github.io/guitarillaz/
  */
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-/*
+/**
  *
  */
 public class GuitarillazMain {
@@ -56,28 +56,28 @@ public class GuitarillazMain {
         radioButtonClean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                config.setChannel(GuitarillazConfig.Channel.CLEAN);
+                config.setChannel(Config.Channel.CLEAN);
                 testLabel2.setText(actionEvent.getActionCommand());
             }
         });
         radioButtonCrunch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                config.setChannel(GuitarillazConfig.Channel.CRUNCH);
+                config.setChannel(Config.Channel.CRUNCH);
                 testLabel2.setText(actionEvent.getActionCommand());
             }
         });
         radioButtonDistortion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                config.setChannel(GuitarillazConfig.Channel.DISTORTION);
+                config.setChannel(Config.Channel.DISTORTION);
                 testLabel2.setText(actionEvent.getActionCommand());
             }
         });
     }
 
     private ArrayList<Image> getIconImages() {
-        ArrayList<Image> icons = new ArrayList<Image>();
+        ArrayList<Image> icons = new ArrayList<>();
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_16.png")).getImage());
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_32.png")).getImage());
         icons.add(new ImageIcon(getClass().getResource("/res/icon/guitarillaz_64.png")).getImage());
