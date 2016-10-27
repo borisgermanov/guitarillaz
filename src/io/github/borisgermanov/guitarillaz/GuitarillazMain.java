@@ -22,9 +22,14 @@
 package io.github.borisgermanov.guitarillaz;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -39,6 +44,9 @@ public class GuitarillazMain {
     private JPanel panelChannel;
     private JLabel testLabel;
     private JLabel testLabel2;
+    private JSlider sliderGain;
+    private JSlider sliderVolume;
+    private JProgressBar progressBarLevel;
     private ButtonGroup buttonGroupChannel;
 
     private class Config extends GuitarillazConfig {
@@ -90,6 +98,28 @@ public class GuitarillazMain {
                 testLabel2.setText(actionEvent.getActionCommand());
             }
         });
+        sliderGain.addChangeListener(new ChangeListener() {
+            /**
+             * Invoked when the target of the listener has changed its state.
+             *
+             * @param e a ChangeEvent object
+             */
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                testLabel2.setText(String.valueOf(((int)(((JSlider)e.getSource()).getValue()))));
+            }
+        });
+        sliderVolume.addChangeListener(new ChangeListener() {
+            /**
+             * Invoked when the target of the listener has changed its state.
+             *
+             * @param e a ChangeEvent object
+             */
+            @Override
+            public void stateChanged(ChangeEvent e) {
+
+            }
+        });
     }
 
     private ArrayList<Image> getIconImages() {
@@ -108,6 +138,7 @@ public class GuitarillazMain {
         mainFrame.setIconImages(guitarillazMain.getIconImages());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.pack();
+        mainFrame.setLocationByPlatform(true);
         mainFrame.setVisible(true);
     }
 }
